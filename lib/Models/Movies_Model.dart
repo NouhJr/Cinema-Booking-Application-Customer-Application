@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer_app/Components/Constants.dart';
 import 'package:customer_app/Components/Navigator.dart';
+import 'package:customer_app/Screens/Movie_Details_Screen.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -82,16 +83,16 @@ class SingleMovie extends StatelessWidget {
           elevation: 10.0,
           child: InkWell(
             onTap: () {
-              // CustomRouter().navigator(
-              //     context,
-              //     MovieDetails(
-              //       movieTitle: movieTitle,
-              //       movieDescription: movieDesc,
-              //       movieImage: movieImg,
-              //       movieSeats: movieSeats,
-              //       movieTime: movieTime,
-              //       documentID: docID,
-              //     ));
+              CustomRouter().navigator(
+                  context,
+                  MovieDetails(
+                    movieTitle: movieTitle,
+                    movieDescription: movieDesc,
+                    movieImage: movieImg,
+                    movieSeats: movieSeats,
+                    movieTime: movieTime,
+                    documentID: docID,
+                  ));
             },
             child: GridTile(
               footer: Container(

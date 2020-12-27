@@ -3,6 +3,8 @@ import 'package:customer_app/Components/Constants.dart';
 import 'package:customer_app/Components/Size_Configurations.dart';
 import 'package:customer_app/Components/Navigator.dart';
 import 'package:customer_app/Models/Movies_Model.dart';
+import 'package:customer_app/Screens/Sign_Up_Screen.dart';
+import 'package:customer_app/Screens/Sign_In_Screen.dart';
 
 class UnAuthenticatedHomeScreen extends StatefulWidget {
   @override
@@ -65,29 +67,35 @@ class _UnAuthenticatedHomeScreenState extends State<UnAuthenticatedHomeScreen> {
           actions: [
             ButtonTheme(
               child: RaisedButton(
-                  color: SubMainColor,
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      color: Colors.blueGrey[900],
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                    ),
+                color: SubMainColor,
+                child: Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    color: Colors.blueGrey[900],
+                    fontWeight: FontWeight.w400,
+                    fontSize: 18,
                   ),
-                  onPressed: () {}),
+                ),
+                onPressed: () {
+                  CustomRouter().navigator(context, SignUp());
+                },
+              ),
             ),
             ButtonTheme(
               child: RaisedButton(
-                  color: SubMainColor,
-                  child: Text(
-                    'Sign In',
-                    style: TextStyle(
-                      color: Colors.blueGrey[900],
-                      fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                    ),
+                color: SubMainColor,
+                child: Text(
+                  'Sign In',
+                  style: TextStyle(
+                    color: Colors.blueGrey[900],
+                    fontWeight: FontWeight.w400,
+                    fontSize: 18,
                   ),
-                  onPressed: () {}),
+                ),
+                onPressed: () {
+                  CustomRouter().navigator(context, SignIn());
+                },
+              ),
             ),
           ],
         ));
