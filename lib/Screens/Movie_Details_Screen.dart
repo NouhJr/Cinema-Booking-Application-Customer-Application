@@ -1,53 +1,85 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:customer_app/Components/Size_Configurations.dart';
 import 'package:customer_app/Components/Constants.dart';
 import 'package:customer_app/Components/Navigator.dart';
 import 'package:customer_app/Screens/Sign_Up_Screen.dart';
 import 'package:customer_app/Screens/Sign_In_Screen.dart';
-import 'package:customer_app/Screens/Home_Screen.dart';
+import 'package:customer_app/Screens/Book_Seats_Screen.dart';
 
 class MovieDetails extends StatefulWidget {
   MovieDetails({
-    this.movieTitle,
-    this.movieDescription,
-    this.movieTime,
-    this.movieImage,
-    this.movieSeats,
+    // this.movieTitle,
+    // this.movieDescription,
+    // this.movieTime,
+    // this.movieImage,
+    // this.movieSeats,
     this.documentID,
   });
-  final String movieTitle;
-  final String movieDescription;
-  final String movieTime;
-  final String movieImage;
+  // final String movieTitle;
+  // final String movieDescription;
+  // final String movieTime;
+  // final String movieImage;
+  // final int movieSeats;
   final String documentID;
-  final int movieSeats;
   @override
   _MovieDetailsState createState() => _MovieDetailsState(
-        title: movieTitle,
-        description: movieDescription,
-        time: movieTime,
-        image: movieImage,
-        docID: documentID,
-        seats: movieSeats,
+      // title: movieTitle,
+      // description: movieDescription,
+      // time: movieTime,
+      // image: movieImage,
+      // docID: documentID,
+      // seats: movieSeats,
       );
 }
 
 class _MovieDetailsState extends State<MovieDetails> {
-  _MovieDetailsState({
-    this.title,
-    this.description,
-    this.time,
-    this.image,
-    this.seats,
-    this.docID,
-  });
-  final String title;
-  final String description;
-  final String time;
-  final String image;
-  final String docID;
-  final int seats;
+  // _MovieDetailsState({
+  //   this.title,
+  //   this.description,
+  //   this.time,
+  //   this.image,
+  //   this.seats,
+  //   this.docID,
+  // });
+  // final String title;
+  // final String description;
+  // final String time;
+  // final String image;
+  // final int seats;
+  // final String docID;
+
+  String title = '';
+  String description = '';
+  String time = '';
+  String image = '';
+  int seats = 0;
+
+  final fireStore = FirebaseFirestore.instance;
+  void getData() async {
+    final doc =
+        await fireStore.collection('Movies').doc(widget.documentID).get();
+    var movieTitle = doc['Title'];
+    var movieDescription = doc['Description'];
+    var movieTime = doc['Time'];
+    var movieImage = doc['Image'];
+    var movieSeats = doc['Number of seats'];
+
+    setState(() {
+      title = movieTitle;
+      description = movieDescription;
+      time = movieTime;
+      image = movieImage;
+      seats = movieSeats;
+    });
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -259,6 +291,10 @@ class _MovieDetailsState extends State<MovieDetails> {
                 ),
               ],
             ))
-        : CustomRouter().navigator(context, Home());
+        : CustomRouter().navigator(
+            context,
+            BookSeat(
+              movieDocID: widget.documentID,
+            ));
   }
 }

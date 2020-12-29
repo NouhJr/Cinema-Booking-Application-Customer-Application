@@ -86,11 +86,11 @@ class SingleMovie extends StatelessWidget {
               CustomRouter().navigator(
                   context,
                   MovieDetails(
-                    movieTitle: movieTitle,
-                    movieDescription: movieDesc,
-                    movieImage: movieImg,
-                    movieSeats: movieSeats,
-                    movieTime: movieTime,
+                    // movieTitle: movieTitle,
+                    // movieDescription: movieDesc,
+                    // movieImage: movieImg,
+                    // movieSeats: movieSeats,
+                    // movieTime: movieTime,
                     documentID: docID,
                   ));
             },
