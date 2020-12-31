@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity/connectivity.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:customer_app/Components/Seats.dart';
 import 'package:customer_app/Components/Constants.dart';
 import 'package:customer_app/Components/Size_Configurations.dart';
+import 'package:customer_app/Components/Navigator.dart';
+import 'package:customer_app/Components/FlushBar.dart';
+import 'package:customer_app/Screens/Home_Screen.dart';
 
 class BookSeat extends StatefulWidget {
   BookSeat({this.movieDocID});
@@ -241,7 +246,7 @@ class _BookSeatState extends State<BookSeat> {
             children: <Widget>[
               Container(
                 child: Text(
-                  "Choose Your Seat :",
+                  "Choose Your Seat",
                   style: AppBarFontStyle,
                 ),
               ),
@@ -799,30 +804,158 @@ class _BookSeatState extends State<BookSeat> {
   }
 
   List<dynamic> ids = [];
+  List<dynamic> newSelectedIDs = [];
+  int numberOfSeats;
+  int numberOfSeatsForNotification;
   var seatsData = [];
 
   void submitBook() async {
-    try {
-      final doc =
-          await fireStore.collection('Movies').doc(widget.movieDocID).get();
-      List<dynamic> tempids = doc['Selected IDs'];
-      var tempSeatsData = doc['Seats'];
-      setState(() {
-        ids = tempids;
-        seatsData = tempSeatsData;
-      });
-      for (int i = 0; i < ids.length; i++) {
-        for (int j = 0; j < seatsData.length; j++) {
-          if (ids[i] == seatsData[j]["ID"]) {
-            setState(() {
-              seatsData[j]["Is Reserved"] = true;
-            });
+    //Check if there is internet connection or not and display message error if not.
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.none) {
+      Warning().errorMessage(
+        context,
+        title: "No internet connection !",
+        message: "Pleas turn on wifi or mobile data",
+        icons: Icons.signal_wifi_off,
+      );
+    } else {
+      try {
+        final doc =
+            await fireStore.collection('Movies').doc(widget.movieDocID).get();
+        List<dynamic> tempids = doc['Selected IDs'];
+        var tempSeatsData = doc['Seats'];
+        var tempNumberOfSeats = doc['Number of seats'];
+        setState(() {
+          ids = tempids;
+          seatsData = tempSeatsData;
+          numberOfSeats = tempNumberOfSeats;
+        });
+        setState(() {
+          numberOfSeatsForNotification = ids.length;
+        });
+        if (ids.isEmpty) {
+          showDialog(
+              context: context,
+              child: AlertDialog(
+                backgroundColor: Colors.blueGrey[900],
+                elevation: 1.0,
+                content: Text(
+                  "You didn't select any seats !",
+                  style: TextStyle(
+                    color: MainFontsColor,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20.0,
+                  ),
+                ),
+                actions: [
+                  ButtonTheme(
+                    child: RaisedButton(
+                      color: SubMainColor,
+                      child: Text(
+                        'Ok',
+                        style: TextStyle(
+                          color: Colors.blueGrey[900],
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ],
+              ));
+        } else {
+          Warning().errorMessage(
+            context,
+            title: "Booking....",
+            message: "Booking your seats is on progress",
+            icons: Icons.arrow_circle_up,
+          );
+          for (int i = 0; i < ids.length; i++) {
+            for (int j = 0; j < seatsData.length; j++) {
+              if (ids[i] == seatsData[j]["ID"]) {
+                setState(() {
+                  seatsData[j]["Is Reserved"] = true;
+                });
+              }
+            }
           }
+          await fireStore.collection('Movies').doc(widget.movieDocID).update({
+            'Seats': seatsData,
+            'Number of seats': numberOfSeats - ids.length,
+          });
+          createUserNotifications();
+          showDialog(
+              context: context,
+              child: AlertDialog(
+                backgroundColor: Colors.blueGrey[900],
+                elevation: 1.0,
+                content: Text(
+                  "${ids.length} seat(s) booked successfully !",
+                  style: TextStyle(
+                    color: MainFontsColor,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20.0,
+                  ),
+                ),
+                actions: [
+                  ButtonTheme(
+                    child: RaisedButton(
+                      color: SubMainColor,
+                      child: Text(
+                        'Ok',
+                        style: TextStyle(
+                          color: Colors.blueGrey[900],
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18,
+                        ),
+                      ),
+                      onPressed: () {
+                        CustomRouter().navigator(context, Home());
+                      },
+                    ),
+                  ),
+                ],
+              ));
+          ids.clear();
+          setState(() {
+            newSelectedIDs = ids;
+          });
+          await fireStore.collection('Movies').doc(widget.movieDocID).update({
+            'Selected IDs': newSelectedIDs,
+            'Selected IDs Index': -1,
+          });
         }
+      } catch (e) {
+        print(e.toString());
       }
-      await fireStore.collection('Movies').doc(widget.movieDocID).update({
-        'Seats': seatsData,
-        'Number of seats': 47 - ids.length,
+    }
+  }
+
+  String userName;
+  String userImage;
+
+  void createUserNotifications() async {
+    SharedPreferences getpref = await SharedPreferences.getInstance();
+    var userDocID = getpref.getString('EMAIL');
+    try {
+      final userDoc = await fireStore.collection('Users').doc(userDocID).get();
+      var name = userDoc['User Name'];
+      var image = userDoc['Image'];
+
+      setState(() {
+        userName = name;
+        userImage = image;
+      });
+
+      await fireStore.collection('Customer Notifications').doc().set({
+        'User Name': userName,
+        'User Image': userImage,
+        'Number Of Booked Seats': numberOfSeatsForNotification,
+        'Movie DocID': widget.movieDocID,
       });
     } catch (e) {
       print(e.toString());

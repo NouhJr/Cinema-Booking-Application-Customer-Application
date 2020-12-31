@@ -10,50 +10,21 @@ import 'package:customer_app/Screens/Book_Seats_Screen.dart';
 
 class MovieDetails extends StatefulWidget {
   MovieDetails({
-    // this.movieTitle,
-    // this.movieDescription,
-    // this.movieTime,
-    // this.movieImage,
-    // this.movieSeats,
     this.documentID,
   });
-  // final String movieTitle;
-  // final String movieDescription;
-  // final String movieTime;
-  // final String movieImage;
-  // final int movieSeats;
+
   final String documentID;
+
   @override
-  _MovieDetailsState createState() => _MovieDetailsState(
-      // title: movieTitle,
-      // description: movieDescription,
-      // time: movieTime,
-      // image: movieImage,
-      // docID: documentID,
-      // seats: movieSeats,
-      );
+  _MovieDetailsState createState() => _MovieDetailsState();
 }
 
 class _MovieDetailsState extends State<MovieDetails> {
-  // _MovieDetailsState({
-  //   this.title,
-  //   this.description,
-  //   this.time,
-  //   this.image,
-  //   this.seats,
-  //   this.docID,
-  // });
-  // final String title;
-  // final String description;
-  // final String time;
-  // final String image;
-  // final int seats;
-  // final String docID;
-
   String title = '';
   String description = '';
   String time = '';
-  String image = '';
+  String image =
+      "https://firebasestorage.googleapis.com/v0/b/cinema-management-system-39a82.appspot.com/o/images.png?alt=media&token=23d14fd0-c816-49e8-8776-59cc4bca30f1";
   int seats = 0;
 
   final fireStore = FirebaseFirestore.instance;
@@ -78,6 +49,7 @@ class _MovieDetailsState extends State<MovieDetails> {
   @override
   void initState() {
     getData();
+    Future.delayed(Duration(seconds: 1));
     super.initState();
   }
 
@@ -239,7 +211,7 @@ class _MovieDetailsState extends State<MovieDetails> {
     );
   }
 
-  Future bookSeat() async {
+  void bookSeat() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var email = prefs.getString('EMAIL');
     email == null
@@ -269,6 +241,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                       ),
                     ),
                     onPressed: () {
+                      Navigator.pop(context);
                       CustomRouter().navigator(context, SignUp());
                     },
                   ),
@@ -285,6 +258,7 @@ class _MovieDetailsState extends State<MovieDetails> {
                       ),
                     ),
                     onPressed: () {
+                      Navigator.pop(context);
                       CustomRouter().navigator(context, SignIn());
                     },
                   ),

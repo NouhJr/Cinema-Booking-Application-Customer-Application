@@ -37,6 +37,7 @@ class _UnAuthenticatedHomeScreenState extends State<UnAuthenticatedHomeScreen> {
             iconSize: 35,
           ),
         ],
+        leading: Container(),
       ),
       body: ListView(
         children: [
@@ -57,7 +58,7 @@ class _UnAuthenticatedHomeScreenState extends State<UnAuthenticatedHomeScreen> {
           backgroundColor: Colors.blueGrey[900],
           elevation: 1.0,
           content: Text(
-            'Welcome to Your Cinema',
+            'Welcome to Your Cinema App',
             style: TextStyle(
               color: MainFontsColor,
               fontWeight: FontWeight.w400,
@@ -77,6 +78,7 @@ class _UnAuthenticatedHomeScreenState extends State<UnAuthenticatedHomeScreen> {
                   ),
                 ),
                 onPressed: () {
+                  Navigator.pop(context);
                   CustomRouter().navigator(context, SignUp());
                 },
               ),
@@ -93,6 +95,7 @@ class _UnAuthenticatedHomeScreenState extends State<UnAuthenticatedHomeScreen> {
                   ),
                 ),
                 onPressed: () {
+                  Navigator.pop(context);
                   CustomRouter().navigator(context, SignIn());
                 },
               ),

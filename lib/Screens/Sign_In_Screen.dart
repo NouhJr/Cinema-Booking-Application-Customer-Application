@@ -26,10 +26,20 @@ class _SignInState extends State<SignIn> {
       backgroundColor: Colors.blueGrey[900],
       body: Container(
         margin: EdgeInsets.only(
-          top: SizeConfig.defaultSize * 5.5,
+          top: SizeConfig.defaultSize * 20.0,
+          left: SizeConfig.defaultSize,
         ),
         child: Column(
           children: [
+            Container(
+              margin: EdgeInsets.only(
+                bottom: SizeConfig.defaultSize * 2.0,
+              ),
+              child: Text(
+                "Sign In",
+                style: AppBarFontStyle,
+              ),
+            ),
             Textfield(
               controller: emailController,
               label: 'Email',

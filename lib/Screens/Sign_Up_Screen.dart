@@ -31,10 +31,19 @@ class _SignUpState extends State<SignUp> {
       backgroundColor: Colors.blueGrey[900],
       body: Container(
         margin: EdgeInsets.only(
-          top: SizeConfig.defaultSize * 5.5,
+          top: SizeConfig.defaultSize * 10.0,
         ),
         child: Column(
           children: [
+            Container(
+              margin: EdgeInsets.only(
+                bottom: SizeConfig.defaultSize * 2.0,
+              ),
+              child: Text(
+                "Sign Up",
+                style: AppBarFontStyle,
+              ),
+            ),
             Textfield(
               controller: emailController,
               label: 'Email',
