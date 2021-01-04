@@ -287,7 +287,16 @@ class _SignUpState extends State<SignUp> {
           CustomRouter().navigator(context, Home());
         }
       } catch (e) {
-        print(e.toString());
+        //Showing error message if sign in process failed.
+        Warning().errorMessage(
+          context,
+          title: "SignUp failed !",
+          message: "Try again later.",
+          icons: Icons.warning,
+        );
+        emailController.clear();
+        passwordController.clear();
+        userNameController.clear();
       }
     }
   }

@@ -31,6 +31,7 @@ class _BookSeatState extends State<BookSeat> {
       setState(() {
         seats[j]["id"] = list[j]["ID"];
         seats[j]["isReserved"] = list[j]["Is Reserved"];
+        seats[j]["user"] = list[j]["User"];
       });
     }
   }
@@ -42,194 +43,53 @@ class _BookSeatState extends State<BookSeat> {
   }
 
   var seats = [
-    {
-      "id": 1,
-      "isReserved": false,
-    },
-    {
-      "id": 2,
-      "isReserved": false,
-    },
-    {
-      "id": 3,
-      "isReserved": false,
-    },
-    {
-      "id": 4,
-      "isReserved": false,
-    },
-    {
-      "id": 5,
-      "isReserved": false,
-    },
-    {
-      "id": 6,
-      "isReserved": false,
-    },
-    {
-      "id": 7,
-      "isReserved": false,
-    },
-    {
-      "id": 8,
-      "isReserved": false,
-    },
-    {
-      "id": 9,
-      "isReserved": false,
-    },
-    {
-      "id": 10,
-      "isReserved": false,
-    },
-    {
-      "id": 11,
-      "isReserved": false,
-    },
-    {
-      "id": 12,
-      "isReserved": false,
-    },
-    {
-      "id": 13,
-      "isReserved": false,
-    },
-    {
-      "id": 14,
-      "isReserved": false,
-    },
-    {
-      "id": 15,
-      "isReserved": false,
-    },
-    {
-      "id": 16,
-      "isReserved": false,
-    },
-    {
-      "id": 17,
-      "isReserved": false,
-    },
-    {
-      "id": 18,
-      "isReserved": false,
-    },
-    {
-      "id": 19,
-      "isReserved": false,
-    },
-    {
-      "id": 20,
-      "isReserved": false,
-    },
-    {
-      "id": 21,
-      "isReserved": false,
-    },
-    {
-      "id": 22,
-      "isReserved": false,
-    },
-    {
-      "id": 23,
-      "isReserved": false,
-    },
-    {
-      "id": 24,
-      "isReserved": false,
-    },
-    {
-      "id": 25,
-      "isReserved": false,
-    },
-    {
-      "id": 26,
-      "isReserved": false,
-    },
-    {
-      "id": 27,
-      "isReserved": false,
-    },
-    {
-      "id": 28,
-      "isReserved": false,
-    },
-    {
-      "id": 29,
-      "isReserved": false,
-    },
-    {
-      "id": 30,
-      "isReserved": false,
-    },
-    {
-      "id": 31,
-      "isReserved": false,
-    },
-    {
-      "id": 32,
-      "isReserved": false,
-    },
-    {
-      "id": 33,
-      "isReserved": false,
-    },
-    {
-      "id": 34,
-      "isReserved": false,
-    },
-    {
-      "id": 35,
-      "isReserved": false,
-    },
-    {
-      "id": 36,
-      "isReserved": false,
-    },
-    {
-      "id": 37,
-      "isReserved": false,
-    },
-    {
-      "id": 38,
-      "isReserved": false,
-    },
-    {
-      "id": 39,
-      "isReserved": false,
-    },
-    {
-      "id": 40,
-      "isReserved": false,
-    },
-    {
-      "id": 41,
-      "isReserved": false,
-    },
-    {
-      "id": 42,
-      "isReserved": false,
-    },
-    {
-      "id": 43,
-      "isReserved": false,
-    },
-    {
-      "id": 44,
-      "isReserved": false,
-    },
-    {
-      "id": 45,
-      "isReserved": false,
-    },
-    {
-      "id": 46,
-      "isReserved": false,
-    },
-    {
-      "id": 47,
-      "isReserved": false,
-    },
+    {"id": 1, "isReserved": false, "user": ""},
+    {"id": 2, "isReserved": false, "user": ""},
+    {"id": 3, "isReserved": false, "user": ""},
+    {"id": 4, "isReserved": false, "user": ""},
+    {"id": 5, "isReserved": false, "user": ""},
+    {"id": 6, "isReserved": false, "user": ""},
+    {"id": 7, "isReserved": false, "user": ""},
+    {"id": 8, "isReserved": false, "user": ""},
+    {"id": 9, "isReserved": false, "user": ""},
+    {"id": 10, "isReserved": false, "user": ""},
+    {"id": 11, "isReserved": false, "user": ""},
+    {"id": 12, "isReserved": false, "user": ""},
+    {"id": 13, "isReserved": false, "user": ""},
+    {"id": 14, "isReserved": false, "user": ""},
+    {"id": 15, "isReserved": false, "user": ""},
+    {"id": 16, "isReserved": false, "user": ""},
+    {"id": 17, "isReserved": false, "user": ""},
+    {"id": 18, "isReserved": false, "user": ""},
+    {"id": 19, "isReserved": false, "user": ""},
+    {"id": 20, "isReserved": false, "user": ""},
+    {"id": 21, "isReserved": false, "user": ""},
+    {"id": 22, "isReserved": false, "user": ""},
+    {"id": 23, "isReserved": false, "user": ""},
+    {"id": 24, "isReserved": false, "user": ""},
+    {"id": 25, "isReserved": false, "user": ""},
+    {"id": 26, "isReserved": false, "user": ""},
+    {"id": 27, "isReserved": false, "user": ""},
+    {"id": 28, "isReserved": false, "user": ""},
+    {"id": 29, "isReserved": false, "user": ""},
+    {"id": 30, "isReserved": false, "user": ""},
+    {"id": 31, "isReserved": false, "user": ""},
+    {"id": 32, "isReserved": false, "user": ""},
+    {"id": 33, "isReserved": false, "user": ""},
+    {"id": 34, "isReserved": false, "user": ""},
+    {"id": 35, "isReserved": false, "user": ""},
+    {"id": 36, "isReserved": false, "user": ""},
+    {"id": 37, "isReserved": false, "user": ""},
+    {"id": 38, "isReserved": false, "user": ""},
+    {"id": 39, "isReserved": false, "user": ""},
+    {"id": 40, "isReserved": false, "user": ""},
+    {"id": 41, "isReserved": false, "user": ""},
+    {"id": 42, "isReserved": false, "user": ""},
+    {"id": 43, "isReserved": false, "user": ""},
+    {"id": 44, "isReserved": false, "user": ""},
+    {"id": 45, "isReserved": false, "user": ""},
+    {"id": 46, "isReserved": false, "user": ""},
+    {"id": 47, "isReserved": false, "user": ""},
   ];
 
   @override
@@ -269,6 +129,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[0]["id"],
                     isReserved: seats[0]["isReserved"],
+                    userEmail: seats[0]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -276,6 +137,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[1]["id"],
                     isReserved: seats[1]["isReserved"],
+                    userEmail: seats[1]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -283,6 +145,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[2]["id"],
                     isReserved: seats[2]["isReserved"],
+                    userEmail: seats[2]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -290,6 +153,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[3]["id"],
                     isReserved: seats[3]["isReserved"],
+                    userEmail: seats[3]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -301,6 +165,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[4]["id"],
                     isReserved: seats[4]["isReserved"],
+                    userEmail: seats[4]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -308,6 +173,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[5]["id"],
                     isReserved: seats[5]["isReserved"],
+                    userEmail: seats[5]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -315,6 +181,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[6]["id"],
                     isReserved: seats[6]["isReserved"],
+                    userEmail: seats[6]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -332,6 +199,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[7]["id"],
                     isReserved: seats[7]["isReserved"],
+                    userEmail: seats[7]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -339,6 +207,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[8]["id"],
                     isReserved: seats[8]["isReserved"],
+                    userEmail: seats[8]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -346,6 +215,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[9]["id"],
                     isReserved: seats[9]["isReserved"],
+                    userEmail: seats[9]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -353,6 +223,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[10]["id"],
                     isReserved: seats[10]["isReserved"],
+                    userEmail: seats[10]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -364,6 +235,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[11]["id"],
                     isReserved: seats[11]["isReserved"],
+                    userEmail: seats[11]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -371,6 +243,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[12]["id"],
                     isReserved: seats[12]["isReserved"],
+                    userEmail: seats[12]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -378,6 +251,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[13]["id"],
                     isReserved: seats[13]["isReserved"],
+                    userEmail: seats[13]["user"],
                     movieDOC: widget.movieDocID,
                   ),
                 ],
@@ -391,6 +265,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[14]["id"],
                     isReserved: seats[14]["isReserved"],
+                    userEmail: seats[14]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -398,6 +273,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[15]["id"],
                     isReserved: seats[15]["isReserved"],
+                    userEmail: seats[15]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -405,6 +281,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[16]["id"],
                     isReserved: seats[16]["isReserved"],
+                    userEmail: seats[16]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -412,6 +289,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[17]["id"],
                     isReserved: seats[17]["isReserved"],
+                    userEmail: seats[17]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -423,6 +301,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[18]["id"],
                     isReserved: seats[18]["isReserved"],
+                    userEmail: seats[18]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -430,6 +309,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[19]["id"],
                     isReserved: seats[19]["isReserved"],
+                    userEmail: seats[19]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -437,6 +317,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[20]["id"],
                     isReserved: seats[20]["isReserved"],
+                    userEmail: seats[20]["user"],
                     movieDOC: widget.movieDocID,
                   ),
                 ],
@@ -450,6 +331,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[21]["id"],
                     isReserved: seats[21]["isReserved"],
+                    userEmail: seats[21]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -457,6 +339,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[22]["id"],
                     isReserved: seats[22]["isReserved"],
+                    userEmail: seats[22]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -464,6 +347,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[23]["id"],
                     isReserved: seats[23]["isReserved"],
+                    userEmail: seats[23]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -471,6 +355,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[24]["id"],
                     isReserved: seats[24]["isReserved"],
+                    userEmail: seats[24]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -482,6 +367,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[25]["id"],
                     isReserved: seats[25]["isReserved"],
+                    userEmail: seats[25]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -489,6 +375,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[26]["id"],
                     isReserved: seats[26]["isReserved"],
+                    userEmail: seats[26]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -496,6 +383,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[27]["id"],
                     isReserved: seats[27]["isReserved"],
+                    userEmail: seats[27]["user"],
                     movieDOC: widget.movieDocID,
                   ),
                 ],
@@ -509,6 +397,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[28]["id"],
                     isReserved: seats[28]["isReserved"],
+                    userEmail: seats[28]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -516,6 +405,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[29]["id"],
                     isReserved: seats[29]["isReserved"],
+                    userEmail: seats[29]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -523,6 +413,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[30]["id"],
                     isReserved: seats[30]["isReserved"],
+                    userEmail: seats[30]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -530,6 +421,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[31]["id"],
                     isReserved: seats[31]["isReserved"],
+                    userEmail: seats[31]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -541,6 +433,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[32]["id"],
                     isReserved: seats[32]["isReserved"],
+                    userEmail: seats[32]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -548,6 +441,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[33]["id"],
                     isReserved: seats[33]["isReserved"],
+                    userEmail: seats[33]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -555,6 +449,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[34]["id"],
                     isReserved: seats[34]["isReserved"],
+                    userEmail: seats[34]["user"],
                     movieDOC: widget.movieDocID,
                   ),
                 ],
@@ -568,6 +463,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[35]["id"],
                     isReserved: seats[35]["isReserved"],
+                    userEmail: seats[35]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -575,6 +471,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[36]["id"],
                     isReserved: seats[36]["isReserved"],
+                    userEmail: seats[36]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -582,6 +479,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[37]["id"],
                     isReserved: seats[37]["isReserved"],
+                    userEmail: seats[37]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -589,6 +487,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[38]["id"],
                     isReserved: seats[38]["isReserved"],
+                    userEmail: seats[38]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -600,6 +499,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[39]["id"],
                     isReserved: seats[39]["isReserved"],
+                    userEmail: seats[39]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -607,6 +507,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[40]["id"],
                     isReserved: seats[40]["isReserved"],
+                    userEmail: seats[40]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -614,6 +515,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[41]["id"],
                     isReserved: seats[41]["isReserved"],
+                    userEmail: seats[41]["user"],
                     movieDOC: widget.movieDocID,
                   ),
                 ],
@@ -631,6 +533,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[42]["id"],
                     isReserved: seats[42]["isReserved"],
+                    userEmail: seats[42]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -638,6 +541,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[43]["id"],
                     isReserved: seats[43]["isReserved"],
+                    userEmail: seats[43]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -645,6 +549,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[44]["id"],
                     isReserved: seats[44]["isReserved"],
+                    userEmail: seats[44]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -656,6 +561,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[45]["id"],
                     isReserved: seats[45]["isReserved"],
+                    userEmail: seats[45]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -663,6 +569,7 @@ class _BookSeatState extends State<BookSeat> {
                   Seat(
                     selectedSeatID: seats[46]["id"],
                     isReserved: seats[46]["isReserved"],
+                    userEmail: seats[46]["user"],
                     movieDOC: widget.movieDocID,
                   ),
 
@@ -682,7 +589,7 @@ class _BookSeatState extends State<BookSeat> {
                   //Available hint.
                   Container(
                     margin: EdgeInsets.only(
-                      left: SizeConfig.defaultSize * 2.0,
+                      left: SizeConfig.defaultSize * 9.0,
                     ),
                     child: Row(
                       children: [
@@ -715,9 +622,10 @@ class _BookSeatState extends State<BookSeat> {
                     width: SizeConfig.defaultSize - 9.0,
                   ),
 
+                  //Selected hint.
                   Container(
                     margin: EdgeInsets.only(
-                      left: SizeConfig.defaultSize * 3.0,
+                      left: SizeConfig.defaultSize * 4.3,
                     ),
                     child: Row(
                       children: [
@@ -745,11 +653,19 @@ class _BookSeatState extends State<BookSeat> {
                       ],
                     ),
                   ),
+                ],
+              ),
 
+              SizedBox(
+                height: SizeConfig.defaultSize,
+              ),
+
+              Row(
+                children: [
                   //Reserved hint
                   Container(
                     margin: EdgeInsets.only(
-                      left: SizeConfig.defaultSize * 4.0,
+                      left: SizeConfig.defaultSize * 9.0,
                     ),
                     child: Row(
                       children: [
@@ -771,6 +687,42 @@ class _BookSeatState extends State<BookSeat> {
                         Container(
                           child: Text(
                             "Reserved",
+                            style: HintLabelFontStyle,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  SizedBox(
+                    width: SizeConfig.defaultSize - 9.0,
+                  ),
+
+                  //Your Seats hint
+                  Container(
+                    margin: EdgeInsets.only(
+                      left: SizeConfig.defaultSize * 4.0,
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 19.0,
+                          height: 19.0,
+                          decoration: BoxDecoration(
+                            color: YourReservedSeatsColor,
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        ),
+                        SizedBox(
+                          width: SizeConfig.defaultSize - 3.0,
+                        ),
+                        Container(
+                          child: Text(
+                            "Your Seats",
                             style: HintLabelFontStyle,
                           ),
                         ),
@@ -874,11 +826,14 @@ class _BookSeatState extends State<BookSeat> {
             message: "Booking your seats is on progress",
             icons: Icons.arrow_circle_up,
           );
+          SharedPreferences getpref = await SharedPreferences.getInstance();
+          var user = getpref.getString('EMAIL');
           for (int i = 0; i < ids.length; i++) {
             for (int j = 0; j < seatsData.length; j++) {
               if (ids[i] == seatsData[j]["ID"]) {
                 setState(() {
                   seatsData[j]["Is Reserved"] = true;
+                  seatsData[j]["User"] = user;
                 });
               }
             }

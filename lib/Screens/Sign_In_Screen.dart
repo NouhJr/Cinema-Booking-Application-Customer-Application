@@ -165,7 +165,15 @@ class _SignInState extends State<SignIn> {
           CustomRouter().navigator(context, Home());
         }
       } catch (e) {
-        print(e.toString());
+        //Showing error message if sign in process failed.
+        Warning().errorMessage(
+          context,
+          title: "SignIn failed !",
+          message: "Email or password is wrong.",
+          icons: Icons.warning,
+        );
+        emailController.clear();
+        passwordController.clear();
       }
     }
   }
