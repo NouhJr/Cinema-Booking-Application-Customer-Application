@@ -41,6 +41,13 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.8.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/popcorn.png"
+  adaptive_icon_background: "#191919"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -56,6 +63,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
   - assets/screen.png
+  - assets/cinema.png
+  - assets/popcorn.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
