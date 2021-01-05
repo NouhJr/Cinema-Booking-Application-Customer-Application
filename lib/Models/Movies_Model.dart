@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:customer_app/Components/Constants.dart';
 import 'package:customer_app/Components/Navigator.dart';
+import 'package:customer_app/Components/FlushBar.dart';
 import 'package:customer_app/Screens/Movie_Details_Screen.dart';
 
 final _firestore = FirebaseFirestore.instance;
@@ -10,6 +12,8 @@ class MoviesStream extends StatefulWidget {
   @override
   _MoviesStreamState createState() => _MoviesStreamState();
 }
+
+String movieID = '';
 
 class _MoviesStreamState extends State<MoviesStream> {
   @override
@@ -34,6 +38,8 @@ class _MoviesStreamState extends State<MoviesStream> {
           final movieSeats = movie.data()['Number of seats'];
           final doc = movie.data()['DocID'];
 
+          movieID = doc;
+
           final movieCard = SingleMovie(
             movieTitle: movieName,
             movieImg: movieImage,
@@ -45,6 +51,35 @@ class _MoviesStreamState extends State<MoviesStream> {
 
           moviesList.add(movieCard);
         }
+        final fbm = FirebaseMessaging();
+        fbm.configure(
+          onMessage: (msg) {
+            Warning().errorMessage(
+              context,
+              title: "New movies added !",
+              message: "Vendor added new movies, view it now in notifications.",
+              icons: Icons.notifications_active,
+            );
+            return;
+          },
+          onLaunch: (msg) {
+            CustomRouter().navigator(
+                context,
+                MovieDetails(
+                  documentID: movieID,
+                ));
+            return;
+          },
+          onResume: (msg) {
+            CustomRouter().navigator(
+                context,
+                MovieDetails(
+                  documentID: movieID,
+                ));
+            return;
+          },
+        );
+        fbm.subscribeToTopic('CustomerNotfication');
         return GridView.builder(
             itemCount: moviesList.length,
             gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(

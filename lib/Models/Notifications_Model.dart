@@ -27,7 +27,7 @@ class _NotificationsStreamState extends State<NotificationsStream> {
             ),
           );
         }
-        final notifications = snapshot.data.docs.reversed;
+        final notifications = snapshot.data.docs;
         List<SingleNotifications> notificationsList = [];
         for (var item in notifications) {
           final movieDocID = item.data()['Movie DOC ID'];
@@ -38,6 +38,7 @@ class _NotificationsStreamState extends State<NotificationsStream> {
 
           notificationsList.add(notificationsTile);
         }
+
         return ListView.builder(
           itemCount: notificationsList.length,
           itemBuilder: (context, i) => Column(children: <Widget>[
@@ -64,9 +65,6 @@ class SingleNotifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      // leading: Image.network(
-      //   userImage,
-      // ),
       title: Text(
         "Vendor added new movie !",
         style: TextStyle(

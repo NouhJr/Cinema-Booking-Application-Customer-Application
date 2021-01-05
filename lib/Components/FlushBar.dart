@@ -13,7 +13,7 @@ class Warning {
       icon: Icon(
         icons,
         size: 28,
-        color: Colors.red,
+        color: SubMainColor,
       ),
       borderColor: SubMainColor,
       borderWidth: 5,
