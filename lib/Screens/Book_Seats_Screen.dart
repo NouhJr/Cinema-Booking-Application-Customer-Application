@@ -911,6 +911,7 @@ class _BookSeatState extends State<BookSeat> {
         'User Image': userImage,
         'Number Of Booked Seats': numberOfSeatsForNotification,
         'Movie DocID': widget.movieDocID,
+        'Time Stamp': DateTime.now(),
       });
     } catch (e) {
       print(e.toString());

@@ -5,6 +5,7 @@ import 'package:customer_app/Components/Constants.dart';
 import 'package:customer_app/Components/Navigator.dart';
 import 'package:customer_app/Components/FlushBar.dart';
 import 'package:customer_app/Screens/Movie_Details_Screen.dart';
+import 'package:customer_app/Screens/Notifications_Screen.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -12,8 +13,6 @@ class MoviesStream extends StatefulWidget {
   @override
   _MoviesStreamState createState() => _MoviesStreamState();
 }
-
-String movieID = '';
 
 class _MoviesStreamState extends State<MoviesStream> {
   @override
@@ -37,8 +36,6 @@ class _MoviesStreamState extends State<MoviesStream> {
           final movieTime = movie.data()['Time'];
           final movieSeats = movie.data()['Number of seats'];
           final doc = movie.data()['DocID'];
-
-          movieID = doc;
 
           final movieCard = SingleMovie(
             movieTitle: movieName,
@@ -64,18 +61,16 @@ class _MoviesStreamState extends State<MoviesStream> {
           },
           onLaunch: (msg) {
             CustomRouter().navigator(
-                context,
-                MovieDetails(
-                  documentID: movieID,
-                ));
+              context,
+              NotificationsScreen(),
+            );
             return;
           },
           onResume: (msg) {
             CustomRouter().navigator(
-                context,
-                MovieDetails(
-                  documentID: movieID,
-                ));
+              context,
+              NotificationsScreen(),
+            );
             return;
           },
         );

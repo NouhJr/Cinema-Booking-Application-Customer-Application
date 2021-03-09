@@ -18,7 +18,13 @@ class _NotificationsStreamState extends State<NotificationsStream> {
     //Size Configurations to resize widgets according to screen size.
     SizeConfig().init(context);
     return StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('Vendor Notifications').snapshots(),
+      stream: _firestore
+          .collection('Vendor Notifications')
+          .orderBy(
+            "Time Stamp",
+            descending: true,
+          )
+          .snapshots(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return Center(

@@ -12,6 +12,7 @@ void main() async {
   runApp(MaterialApp(
     //Start point (Home Screen)
     debugShowCheckedModeBanner: false,
+    title: "Your Cinema - Customer",
     home: email == null ? UnAuthenticatedHomeScreen() : Home(),
   ));
 }
