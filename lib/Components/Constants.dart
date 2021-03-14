@@ -37,6 +37,16 @@ const MoviesLabelFontStyle = TextStyle(
   fontStyle: FontStyle.italic,
 );
 
+///*************************Movies Label Text Style**************************/
+const HomeLabelFontStyle = TextStyle(
+  fontSize: 20.0,
+  fontWeight: FontWeight.w900,
+  fontStyle: FontStyle.italic,
+  color: MainFontsColor,
+);
+
+///*************************Hint Label Text Style**************************/
+
 ///*************************Hint Label Text Style**************************/
 const HintLabelFontStyle = TextStyle(
   fontSize: 18.0,

@@ -37,6 +37,7 @@ dependencies:
   shared_preferences: ^0.5.8
   connectivity: ^0.4.9
   image_picker: ^0.6.7+4
+  carousel_pro: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +66,14 @@ flutter:
   - assets/screen.png
   - assets/cinema.png
   - assets/popcorn.png
+  - assets/Carousel1.jpg
+  - assets/Carousel2.jpg
+  - assets/Carousel3.jpg
+  - assets/Carousel4.jpg
+  - assets/Carousel5.jpg
+  - assets/Carousel6.jpg
+  - assets/Carousel7.jpg
+  - assets/Carousel8.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

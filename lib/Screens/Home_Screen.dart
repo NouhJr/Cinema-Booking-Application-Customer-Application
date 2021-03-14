@@ -7,6 +7,7 @@ import 'package:customer_app/Components/Constants.dart';
 import 'package:customer_app/Components/Size_Configurations.dart';
 import 'package:customer_app/Components/Navigator.dart';
 import 'package:customer_app/Components/FlushBar.dart';
+import 'package:customer_app/Components/Carousel.dart';
 import 'package:customer_app/Models/Movies_Model.dart';
 import 'package:customer_app/Screens/UnAuthenticated_User_Home_Screen.dart';
 import 'package:customer_app/Screens/Notifications_Screen.dart';
@@ -55,10 +56,22 @@ class _HomeState extends State<Home> {
           leading: Container(),
         ),
         body: ListView(
+          physics: AlwaysScrollableScrollPhysics(),
           children: [
+            imagecarousel,
+            Container(
+              margin: EdgeInsets.only(
+                top: SizeConfig.defaultSize * 2,
+                left: SizeConfig.defaultSize - 2,
+              ),
+              child: Text(
+                'Browse Movies:',
+                style: HomeLabelFontStyle,
+              ),
+            ),
             Container(
               margin: EdgeInsets.only(top: SizeConfig.defaultSize),
-              height: SizeConfig.defaultSize * 70,
+              height: SizeConfig.defaultSize * 45.0,
               child: MoviesStream(),
             ),
           ],

@@ -27,7 +27,7 @@ class _MoviesStreamState extends State<MoviesStream> {
             ),
           );
         }
-        final movies = snapshot.data.docs;
+        final movies = snapshot.data.docs.reversed;
         List<SingleMovie> moviesList = [];
         for (var movie in movies) {
           final movieName = movie.data()['Title'];
