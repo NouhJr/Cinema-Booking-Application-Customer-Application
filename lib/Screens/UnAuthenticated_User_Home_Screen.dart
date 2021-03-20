@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:customer_app/Components/Constants.dart';
 import 'package:customer_app/Components/Size_Configurations.dart';
 import 'package:customer_app/Components/Navigator.dart';
@@ -18,49 +19,57 @@ class _UnAuthenticatedHomeScreenState extends State<UnAuthenticatedHomeScreen> {
   Widget build(BuildContext context) {
     //Size Configurations to resize widgets according to screen size.
     SizeConfig().init(context);
-    return Scaffold(
-      backgroundColor: Colors.blueGrey[900],
-      appBar: AppBar(
-        title: Text(
-          'Your Cinema',
-          style: AppBarFontStyle,
+    return WillPopScope(
+      child: Scaffold(
+        backgroundColor: Colors.blueGrey[900],
+        appBar: AppBar(
+          title: Text(
+            'Your Cinema',
+            style: AppBarFontStyle,
+          ),
+          centerTitle: true,
+          backgroundColor: MainColor,
+          elevation: 1.0,
+          actions: [
+            IconButton(
+              icon: Icon(
+                Icons.group_add,
+                color: SubMainColor,
+              ),
+              onPressed: buttonsAction,
+              iconSize: 35,
+            ),
+          ],
+          leading: Container(),
         ),
-        centerTitle: true,
-        backgroundColor: MainColor,
-        elevation: 1.0,
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.group_add,
-              color: SubMainColor,
+        body: ListView(
+          children: [
+            imagecarousel,
+            Container(
+              margin: EdgeInsets.only(
+                top: SizeConfig.defaultSize * 2,
+                left: SizeConfig.defaultSize - 2,
+              ),
+              child: Text(
+                'Browse Movies:',
+                style: HomeLabelFontStyle,
+              ),
             ),
-            onPressed: buttonsAction,
-            iconSize: 35,
-          ),
-        ],
-        leading: Container(),
+            Container(
+              margin: EdgeInsets.only(top: SizeConfig.defaultSize),
+              height: SizeConfig.defaultSize * 45.0,
+              child: MoviesStream(),
+            ),
+          ],
+        ),
       ),
-      body: ListView(
-        children: [
-          imagecarousel,
-          Container(
-            margin: EdgeInsets.only(
-              top: SizeConfig.defaultSize * 2,
-              left: SizeConfig.defaultSize - 2,
-            ),
-            child: Text(
-              'Browse Movies:',
-              style: HomeLabelFontStyle,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: SizeConfig.defaultSize),
-            height: SizeConfig.defaultSize * 45.0,
-            child: MoviesStream(),
-          ),
-        ],
-      ),
+      onWillPop: _onWillPop,
     );
+  }
+
+  // ignore: missing_return
+  Future<bool> _onWillPop() {
+    SystemNavigator.pop();
   }
 
   void buttonsAction() {
