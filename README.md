@@ -16,3 +16,6 @@ https://github.com/NouhJr/Cinema-Booking-Application-Vendor-Application
 
 # Demo Video:
 https://www.dropbox.com/sh/77jucyajxdockgh/AAC7aiCcmuubZ3E5imA57SZOa?dl=0
+
+## Flutter SDk
+- version:1.22.5
